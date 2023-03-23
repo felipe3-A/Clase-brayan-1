@@ -1,8 +1,12 @@
 // Exportar express
-import Express from 'express';
-const app=Express();
-import pruebarouter from "./router/prueba-router"
+import express from 'express';
+import router from './router/router.js';
 
-app.use(Express.json())
-app.use(pruebarouter)
+const app=express();
+
+
+app.use(express.json())
+
+app.use(router)
+
 export default app;

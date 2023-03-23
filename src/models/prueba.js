@@ -1,10 +1,10 @@
 // Exportar sequelize y crear los typos de datos
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
-
+import {Tareas} from './task.js'
 // Exportar proyecto
 
-export const prueba = sequelize.define('prueba', {
+export const Proyectos = sequelize.define('proyectos', {
     // Identificar dato, tipo de dato, si es llave o no
     id: {
         type: DataTypes.INTEGER,
@@ -12,15 +12,29 @@ export const prueba = sequelize.define('prueba', {
         primaryKey: true,
         autoIncrement: true
     },
-    name:{
-        type:DataTypes.STRING
+    name: {
+        type: DataTypes.STRING
     },
-    surname:{
-        type:DataTypes.STRING
+    
+    priority: {
+        type: DataTypes.INTEGER
     },
-    old:{
-        type:DataTypes.NUMBER
+    description: {
+        type: DataTypes.STRING
     },
-    status:{
-type:DataTypes.BOOLEAN
+    estado: {
+        type: DataTypes.BOOLEAN
+    },
+}, {
+    timestamps: true,
+});
+
+Proyectos.hasMany = (Tareas, {
+    foreignkey: 'proyectoid',
+    sourceKey: 'id'
+})
+// Relacion entre tablas
+Tareas.belongsTo(Proyectos, {
+    foreignkey: 'proyectoid',
+    targetid: 'id'
 })
