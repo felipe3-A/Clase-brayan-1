@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { deleteproyecto, getproyecto, getproyecto1, postproyecto, updateproyecto } from "../controllers/controlador.js";
+import { deleteproyecto, getproyecto, getproyecto1, getproyectotareas, postproyecto, updateproyecto } from "../controllers/controlador.js";
 const router=Router()
 
 // Definir rutas
@@ -10,4 +10,6 @@ router.post('/proyectos',postproyecto)
 router.put('/proyectos/:id',updateproyecto)
 router.delete('/proyectos/:id',deleteproyecto)
 
+// Union de proyectos y tareas
+router.get('/proyectos/:id/tareas',getproyectotareas)
 export default router

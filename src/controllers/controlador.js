@@ -1,6 +1,6 @@
 // Importar modelos y where desde sequelize
 import { Proyectos } from '../models/prueba.js'
-
+import { Tareas } from '../models/task.js'
 // Crear las opciones para el crud crear, obtener, actualizar,borrar
 
 
@@ -77,4 +77,18 @@ export const updateproyecto = async (req, res) => {
         return res.status(500)
             .json(message.error.message)
     }
+}
+
+// Union de proyecto y tarea
+
+export const getproyectotareas = async (req,res)=>{
+try {
+    const {id}=req.params;
+    const tarea =await Tareas.findAll({
+        where:{proyectoId: id}
+    });
+    res.json(tarea)
+} catch (error) {
+    
+}
 }
