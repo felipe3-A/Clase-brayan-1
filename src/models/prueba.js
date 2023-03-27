@@ -30,11 +30,11 @@ export const Proyectos = sequelize.define('proyectos', {
 });
 
 Proyectos.hasMany = (Tareas, {
-    foreignkey: 'proyectoid',
+    foreignkey: 'proyectoId',
     sourceKey: 'id'
 })
 // Relacion entre tablas
 Tareas.belongsTo(Proyectos, {
-    foreignkey: 'proyectoid',
+    foreignkey: 'proyectoId',
     targetid: 'id'
 })
